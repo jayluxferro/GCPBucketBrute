@@ -167,6 +167,7 @@ class Worker(multiprocessing.Process):
     def check_existence(self, bucket_name):
         # Check if bucket exists before trying to TestIamPermissions on it
         response = requests.head('https://www.googleapis.com/storage/v1/b/{}'.format(bucket_name))
+
         if response.status_code not in [400, 404]:
             return True
         return False
